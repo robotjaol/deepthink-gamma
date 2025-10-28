@@ -1,0 +1,5 @@
+{
+  "name": "DeepThink",
+  "description": "DeepThink is a platform similar to Duolingo but designed to train intuition based on the user’s chosen job or field. It features AI-powered scenarios, detailed performance analysis, and competitive leaderboards.",
+  "requestFramePermissions": []
+}

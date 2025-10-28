@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepThink - Train Your Intuition</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DeepThink is a platform similar to Duolingo but designed to train intuition based on the user’s chosen job or field. It features AI-powered scenarios, detailed performance analysis, and competitive leaderboards." />
+    <meta name="keywords" content="intuition training, decision making, professional development, AI scenarios, career simulation, cognitive training" />
+    <meta name="author" content="DeepThink" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://deepthink-demo.vercel.app/" />
+    <meta property="og:title" content="DeepThink - Train Your Intuition" />
+    <meta property="og:description" content="Sharpen your professional judgment with AI-powered scenarios. Practice high-stakes decisions, get detailed analysis, and climb the leaderboards." />
+    <meta property="og:image" content="https://source.unsplash.com/random/1200x630?technology,brain" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://deepthink-demo.vercel.app/" />
+    <meta property="twitter:title" content="DeepThink - Train Your Intuition" />
+    <meta property="twitter:description" content="Sharpen your professional judgment with AI-powered scenarios. Practice high-stakes decisions, get detailed analysis, and climb the leaderboards." />
+    <meta property="twitter:image" content="https://source.unsplash.com/random/1200x630?technology,brain" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              // Light Mode
+              'light-primary': '#FFFFFF',
+              'light-secondary': '#F0F7FF',
+              'light-accent': '#AED6F1',
+              'light-text': '#17202A',
+              'light-green': '#A3E635',
+              // Dark Mode (Luxury Black & Gold)
+              'dark-primary': '#121212',
+              'dark-secondary': '#1E1E1E',
+              'dark-accent': '#D4AF37',
+              'dark-text': '#EAEAEA',
+              'dark-gold': '#D4AF37',
+            },
+            boxShadow: {
+              'glow': '0 0 15px rgba(212, 175, 55, 0.4)',
+              'glow-light': '0 0 15px rgba(174, 214, 241, 0.6)',
+              'inner-strong': 'inset 0 2px 8px rgba(0,0,0,0.4)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+              'slide-in-up': 'slideInUp 0.5s ease-out',
+              'background-pan': 'backgroundPan 3s linear infinite',
+              'ken-burns': 'kenBurns 15s ease-in-out infinite alternate',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideInUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              backgroundPan: {
+                '0%': { backgroundPosition: '0% center' },
+                '100%': { backgroundPosition: '-200% center' },
+              },
+              kenBurns: {
+                '0%': { transform: 'scale(1) translate(0, 0)' },
+                '100%': { transform: 'scale(1.15) translate(-2%, 2%)' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .print-show, .print-show-flex {
+      display: none;
+  }
+
+  /* --- Custom Scrollbar --- */
+  /* For Webkit-based browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #F0F7FF;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #c5dff0;
+    border-radius: 10px;
+    border: 2px solid #F0F7FF;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #AED6F1;
+  }
+  html.dark ::-webkit-scrollbar-track {
+    background-color: #1E1E1E;
+  }
+  html.dark ::-webkit-scrollbar-thumb {
+    background-color: #4b5563; /* gray-600 */
+    border-radius: 10px;
+    border: 2px solid #1E1E1E;
+  }
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background-color: #6b7280; /* gray-500 */
+  }
+
+  @media print {
+    @page {
+        size: A4;
+        margin: 1.5cm;
+    }
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      background-color: white !important;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10pt;
+      line-height: 1.4;
+    }
+    .no-print, .print-hide {
+      display: none !important;
+    }
+    .print-show {
+      display: block !important;
+    }
+    .print-show-flex {
+        display: flex !important;
+    }
+    
+    a {
+        color: #000 !important;
+        text-decoration: none;
+    }
+
+    /* Show URL for external links in print */
+    a[href^="http"]:after {
+        content: " [" attr(href) "]";
+        font-size: 8pt;
+        color: #555;
+        word-break: break-all;
+    }
+    
+    .print-container {
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+      border: none;
+      width: 100%;
+    }
+    .print-card {
+      background-color: #f9fafb !important;
+      border: 1px solid #e5e7eb;
+      box-shadow: none;
+      page-break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .print-text-black {
+      color: black !important;
+    }
+    .print-bg-transparent {
+      background-color: transparent !important;
+    }
+
+    /* --- Typography --- */
+    .print-h1 {
+      font-size: 24pt;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #111827;
+    }
+    .print-h2 {
+        font-size: 16pt;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1.5px solid #d1d5db;
+        color: #1f2937;
+        page-break-after: avoid;
+    }
+    .print-h3 {
+        font-size: 13pt;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+    }
+     .print-h4 {
+        font-size: 11pt;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        color: #4b5563;
+    }
+    ul {
+        padding-left: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    li {
+        margin-bottom: 0.3rem;
+    }
+
+    /* --- Layout & Charts --- */
+    .print-two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      page-break-inside: avoid;
+    }
+    .recharts-wrapper {
+      width: 100% !important;
+      height: 280px !important; /* Fixed height for consistency */
+    }
+    .recharts-surface {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
