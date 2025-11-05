@@ -110,7 +110,7 @@ const LoginPage: React.FC = () => {
                     animate="visible"
                 >
                     <motion.div variants={itemVariants} className="flex items-center">
-                        <img src={theme === 'dark' ? '/dtg-2.png' : '/dt-2.png'} alt="DeepThink" className="h-12 w-auto" />
+                        <img src={theme === 'dark' ? '/dtg-2.png' : '/dt-2.png'} alt="DeepThink" className="h-14 md:h-16 w-auto" />
                     </motion.div>
                     <motion.p variants={itemVariants} className="mt-4 text-xl text-gray-200">Turn your instinct into expertise.</motion.p>
                 </motion.div>

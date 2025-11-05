@@ -50,7 +50,7 @@ const LandingHeader: React.FC = () => {
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-                    <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-8 w-auto" />
+                    <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-10 md:h-12 w-auto" />
                 </div>
                 <nav className="hidden md:flex items-center space-x-8">
                     {navLinks.map(link => (

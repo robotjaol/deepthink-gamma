@@ -47,7 +47,7 @@ const DashboardLayout: React.FC = () => {
             <>
                 <div className="flex flex-col flex-1">
                      <Link to="/dashboard/overview" className="flex items-center mb-8 px-3">
-                        <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-8 w-auto flex-shrink-0" />
+                        <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-10 md:h-12 w-auto flex-shrink-0" />
                     </Link>
                     <nav className="flex flex-col gap-1">
                         {navItems.map((link) => (
