@@ -46,19 +46,8 @@ const DashboardLayout: React.FC = () => {
         return (
             <>
                 <div className="flex flex-col flex-1">
-                     <Link to="/dashboard/overview" className="flex items-center gap-2 mb-8 px-3">
-                        <BrainCircuit size={32} className="text-light-text dark:text-dark-gold flex-shrink-0"/>
-                        <motion.span
-                            animate={{
-                                opacity: open ? 1 : 0,
-                                width: open ? 'auto' : 0,
-                                x: open ? 0 : -10,
-                            }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
-                            className="text-2xl font-bold text-light-text dark:text-dark-gold overflow-hidden whitespace-nowrap"
-                        >
-                            DeepThink
-                        </motion.span>
+                     <Link to="/dashboard/overview" className="flex items-center mb-8 px-3">
+                        <img src="/dt-1.png" alt="DeepThink" className="h-8 w-auto flex-shrink-0" />
                     </Link>
                     <nav className="flex flex-col gap-1">
                         {navItems.map((link) => (

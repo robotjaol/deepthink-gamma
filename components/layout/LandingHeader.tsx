@@ -47,9 +47,8 @@ const LandingHeader: React.FC = () => {
             transition={{ duration: 0.5 }}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-                    <Swords size={28} className="text-light-text dark:text-dark-gold"/>
-                    <span className="text-2xl font-bold">DeepThink</span>
+                <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+                    <img src="/dt-1.png" alt="DeepThink" className="h-8 w-auto" />
                 </div>
                 <nav className="hidden md:flex items-center space-x-8">
                     {navLinks.map(link => (

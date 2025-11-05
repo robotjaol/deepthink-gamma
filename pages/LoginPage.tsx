@@ -107,9 +107,8 @@ const LoginPage: React.FC = () => {
                     initial="hidden"
                     animate="visible"
                 >
-                    <motion.div variants={itemVariants} className="flex items-center space-x-2">
-                        <Swords size={32} className="text-dark-gold"/>
-                        <h1 className="text-4xl font-bold text-white">DeepThink</h1>
+                    <motion.div variants={itemVariants} className="flex items-center">
+                        <img src="/dt-2.png" alt="DeepThink" className="h-12 w-auto" />
                     </motion.div>
                     <motion.p variants={itemVariants} className="mt-4 text-xl text-gray-200">Turn your instinct into expertise.</motion.p>
                 </motion.div>
