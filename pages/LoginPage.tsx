@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Swords, Github, ArrowLeft, Mail } from 'lucide-react';
@@ -18,6 +19,7 @@ const LoginPage: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { login, signup, sendPasswordResetEmail } = useAuth();
+  const { theme } = useTheme();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -108,7 +110,7 @@ const LoginPage: React.FC = () => {
                     animate="visible"
                 >
                     <motion.div variants={itemVariants} className="flex items-center">
-                        <img src="/dt-2.png" alt="DeepThink" className="h-12 w-auto" />
+                        <img src={theme === 'dark' ? '/dtg-2.png' : '/dt-2.png'} alt="DeepThink" className="h-12 w-auto" />
                     </motion.div>
                     <motion.p variants={itemVariants} className="mt-4 text-xl text-gray-200">Turn your instinct into expertise.</motion.p>
                 </motion.div>

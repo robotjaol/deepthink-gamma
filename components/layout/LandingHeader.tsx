@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../../hooks/useTheme';
 import ThemeToggle from '../ui/ThemeToggle';
 import { Button } from '../ui/Button';
 import { Swords, Menu, X } from 'lucide-react';
@@ -8,6 +9,7 @@ import { Swords, Menu, X } from 'lucide-react';
 const LandingHeader: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { theme } = useTheme();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,7 +50,7 @@ const LandingHeader: React.FC = () => {
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-                    <img src="/dt-1.png" alt="DeepThink" className="h-8 w-auto" />
+                    <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-8 w-auto" />
                 </div>
                 <nav className="hidden md:flex items-center space-x-8">
                     {navLinks.map(link => (
