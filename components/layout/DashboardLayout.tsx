@@ -47,7 +47,17 @@ const DashboardLayout: React.FC = () => {
             <>
                 <div className="flex flex-col flex-1">
                      <Link to="/dashboard/overview" className="flex items-center mb-8 px-3">
-                        <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-10 md:h-12 w-auto flex-shrink-0" />
+                        <img src={theme === 'dark' ? '/dtg-1.png' : '/dt-1.png'} alt="DeepThink" className="h-5 w-5 flex-shrink-0" />
+                        <motion.span
+                            animate={{
+                                opacity: open ? 1 : 0,
+                                width: open ? 'auto' : 0,
+                            }}
+                            transition={{ duration: 0.2, ease: "easeOut", delay: 0.1 }}
+                            className="text-light-text dark:text-dark-text text-base font-medium overflow-hidden whitespace-nowrap ml-4"
+                        >
+                            DeepThink
+                        </motion.span>
                     </Link>
                     <nav className="flex flex-col gap-1">
                         {navItems.map((link) => (
