@@ -54,7 +54,7 @@ const DashboardLayout: React.FC = () => {
                                 width: open ? 'auto' : 0,
                             }}
                             transition={{ duration: 0.2, ease: "easeOut", delay: 0.1 }}
-                            className="text-light-text dark:text-dark-text text-base font-medium overflow-hidden whitespace-nowrap ml-4"
+                            className="text-light-text dark:text-yellow-400 text-base font-medium overflow-hidden whitespace-nowrap ml-4"
                         >
                             DeepThink
                         </motion.span>
